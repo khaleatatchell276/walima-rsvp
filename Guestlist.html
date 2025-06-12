@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Guest List - Abdullah & Khalea Walima</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Guest List (Max 100 guests)</h1>
+    <ul id="guestList"></ul>
+  </div>
+  <script>
+    const guestListEl = document.getElementById('guestList');
+    const guests = JSON.parse(localStorage.getItem('guests') || '[]');
+    if (guests.length === 0) {
+      guestListEl.innerHTML = '<li>No RSVPs yet.</li>';
+    } else {
+      guests.forEach((guest) => {
+        const li = document.createElement('li');
+        li.textContent = guest;
+        guestListEl.appendChild(li);
+      });
+    }
+  </script>
+</body>
+</html>
